@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import reviewRoute from "./routes/reviewsRoute.js"
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.get("/", (request, response) => {
   console.log(request);
   return response.status(200).send("Welcome to Book Review System");
 });
+
+app.use("/reviews", reviewRoute);
 
 mongoose
   .connect(mongoDBURL)
